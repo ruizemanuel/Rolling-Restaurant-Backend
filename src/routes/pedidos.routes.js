@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {
-    showPedidos, createPedido, getOnePedido, updatePedido
+    showPedidos, createPedido, getOnePedido, updatePedido, deletePedido
   } from "../controllers/pedidos.controllers";
 
 const router = Router();
@@ -13,6 +13,7 @@ router
   router
   .route("/:id")
   .get(getOnePedido)
+  .delete(deletePedido)
   .put(updatePedido);
 
 

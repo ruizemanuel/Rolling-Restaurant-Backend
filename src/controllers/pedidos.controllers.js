@@ -73,10 +73,24 @@ const createPedido = async (req, res) => {
     }
   };
 
+  const deletePedido = async (req, res) => {
+    try {
+      //buscar el producto por su id  y luego lo elimino
+      await Pedido.findByIdAndDelete(req.params.id);
+      res.status(200).json({ message: "Pedido successfully deleted " });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(404)
+        .json({ message: "Error searching for the requested product" });
+    }
+  };
+
 
 export {
     showPedidos,
     createPedido,
     getOnePedido,
-    updatePedido
+    updatePedido,
+    deletePedido
 };
