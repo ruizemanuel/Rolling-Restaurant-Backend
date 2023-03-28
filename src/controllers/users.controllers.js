@@ -31,7 +31,8 @@ const login = async (req, res) => {
       message: "User email and password correct",
       userName: user.name,
       uid: user._id,
-      token
+      token,
+      roles: user.roles
     })
 
   } catch (error) {
