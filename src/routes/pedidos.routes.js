@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
-    showPedidos, createPedido, getOnePedido, updatePedido, deletePedido
-  } from "../controllers/pedidos.controllers";
+  showPedidos, createPedido, getOnePedido, getUnPedido, updatePedido, deletePedido
+} from "../controllers/pedidos.controllers";
 
 const router = Router();
 
@@ -10,11 +10,17 @@ router
   .get(showPedidos)
   .post(createPedido)
 
-  router
+
+router
   .route("/:id")
   .get(getOnePedido)
+
   .delete(deletePedido)
   .put(updatePedido);
+
+router
+  .route("/pedido")
+  .post(getUnPedido)
 
 
 

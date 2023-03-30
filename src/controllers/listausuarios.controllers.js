@@ -3,7 +3,11 @@ import User from "../models/user";
 const showUsers = async (req, res) => {
     try {
       //voy obtener un array con los productos guardados en BD
+      
       const usersList = await User.find();
+      //const usersList = await User.find({}, { email: 0, password: 0 });
+      //const usersList = await User.find({}, { email: 1, roles: 1 });
+      
       res.status(200).json(usersList);
     } catch (error) {
       console.log(error);

@@ -5,14 +5,20 @@ const pedidoSchema = new Schema({
     productName : String,
     price : Number
      }],
-  uid: {
+  email: {
+    type: String,
     require: true,
-    type: String
-  },
+   },
   estado:{
     type: String,
     maxlenght: 100
  },
+ total: {
+  type: Number,
+  required: true,
+  min: 0, //no permita valores negativos
+  max: 10000, //chequear con front
+},
  
 });
 

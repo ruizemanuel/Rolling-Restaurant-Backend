@@ -16,7 +16,7 @@ const createPedido = async (req, res) => {
     try {
       console.log('DESDE PEDIDO EN BACK', req.body);
   
-      const { pedido, uid, estado  } = req.body;
+      const { pedido, email, estado, total  } = req.body;
   
       //crear un objeto para guardarlo en la BD
       const newPedido = new Pedido({
@@ -26,8 +26,9 @@ const createPedido = async (req, res) => {
               category: req.body.category */
   
         pedido,
-        uid,
-        estado
+        email,
+        estado,
+        total
       });
   
       //guardar en BD
@@ -48,6 +49,27 @@ const createPedido = async (req, res) => {
       const pedidoSearch = await Pedido.findById(req.params.id);
       res.status(200).json(pedidoSearch);
       console.log('ONE PEDIDO', pedidoSearch);
+    } catch (error) {
+      console.log(error);
+      res
+        .status(404)
+        .json({ message: "Error searching for the requested pedido" });
+    }
+  };
+
+  const getUnPedido = async (req, res) => {
+    try {
+      //console.log(req.params);
+
+      const { email } = req.body;
+
+      //const usersList = await User.find({}, { email: 0, password: 0 });
+  
+      //buscamos el producto en mi BD
+      const pedidoSearch = await Pedido.findOne({ email });
+      //const pedidoSearch = await Pedido.find({}, { uid: 1, pedido: 1, estado: 1 });
+      res.status(200).json(pedidoSearch);
+      console.log('UN PEDIDO', pedidoSearch);
     } catch (error) {
       console.log(error);
       res
@@ -91,6 +113,7 @@ export {
     showPedidos,
     createPedido,
     getOnePedido,
+    getUnPedido,
     updatePedido,
     deletePedido
 };

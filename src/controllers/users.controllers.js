@@ -29,7 +29,7 @@ const login = async (req, res) => {
     // si el password y email son correctos
     res.status(200).json({
       message: "User email and password correct",
-      userName: user.name,
+      email: user.email,
       uid: user._id,
       token,
       roles: user.roles
