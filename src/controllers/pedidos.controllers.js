@@ -108,6 +108,27 @@ const createPedido = async (req, res) => {
     }
   };
 
+  const deleteUnPedido = async (req, res) => {
+    try {
+      //buscar el producto por su id  y luego lo elimino
+      //await Pedido.pedido.findByIdAndDelete(req.params.id);
+      const { id, newTotal } = req.body;
+      //console.log('EL ID', req.body)
+      console.log('EL ID',id)
+      console.log('EL ID',newTotal)
+      //await Pedido.findByIdAndUpdate(req.params.id, { $pull: { pedido: { _id: id } }}, { new: true })
+
+      await Pedido.findByIdAndUpdate(req.params.id, { $pull: { pedido: { _id: id }}, $set: { total: newTotal }  }, { new: true });
+
+      res.status(200).json({ message: "Pedido successfully deleted " });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(404)
+        .json({ message: "Error searching for the requested pedido" });
+    }
+  };
+
 
 export {
     showPedidos,
@@ -115,5 +136,6 @@ export {
     getOnePedido,
     getUnPedido,
     updatePedido,
-    deletePedido
+    deletePedido,
+    deleteUnPedido
 };
