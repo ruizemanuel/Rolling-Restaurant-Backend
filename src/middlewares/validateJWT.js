@@ -17,7 +17,7 @@ const validateJWT = (req, res, next) => {
         req.name = payload.username
     } catch (error) {
         console.log(error);
-        res.status(401).json({message: "Invalid token - authentification failed"})
+        res.status(401).json({message: "Token no válido - Por favor inicia sesion nuevamente"})
     }
 
     next();
