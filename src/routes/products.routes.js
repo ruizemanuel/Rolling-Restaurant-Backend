@@ -43,6 +43,6 @@ router
   .route("/:id")
   .get(getOneProduct)
   .delete(validateJWT,deleteProduct)
-  .put(validateJWT, updateProduct);
+  .put([validateJWT, productValidate], updateProduct);
 
 export default router;
