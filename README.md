@@ -1,26 +1,26 @@
-<h1 align="center">CrudBurgers - Backend</h1>
+<h1 align="center">Rolling Restaurant - Backend</h1>
 <h2 align="center">Bienvenidos👋</h2>
 <hr>
 <p>
 
 ## Descripción
-> Este es el backend del proyecto [CrudBurgers](https://crurburgersc14i.netlify.app): 
-<br>El presente proyecto de backend es una API REST con node.js, Express y base de datos mongoDB, con servicios de encriptación de password  en login/registro con bcrypt y autentificacón/autorización de usuarios con JWT.
+> Este es el backend del proyecto [Rolling Restaurant](https://rolling-restaurant.netlify.app/): 
+<br>El presente proyecto de backend es una API REST con Node.js, Express y base de datos en MongoDB, con servicios de encriptación de password en login/registro con bcrypt y autentificacón/autorización de usuarios con JWT.
 
 <hr>
 
-## ✨ [Demo](https://crurburgersc14i.netlify.app/)
+## ✨ [Demo](https://rolling-restaurant.netlify.app/)
 <br>
 
-### 🌟 [Deploy del backend en Render con BD en mongo Atlas](https://crudburgersc14i.onrender.com )
+### 🌟 [Deploy del backend en Render con BD en Mongo Atlas](https://rolling-restaurant-backend.onrender.com)
 <br>
 
-## Install before clone
+## Instalar después de clonar
 
 ```sh
 npm i
 ```
-## Usage
+## Ejecutar con
 
 ```sh
 npm run dev
@@ -37,6 +37,6 @@ npm run dev
 - nodemon
 ## Autor
 
-👤 **Córdoba González, Abel**
+👤 **Ruiz, Jose Emanuel**
 
-* GitHub: [abelcg](https://github.com/abelcg)
+* GitHub: [ruizemanuel](https://github.com/ruizemanuel)
