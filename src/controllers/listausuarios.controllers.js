@@ -11,7 +11,7 @@ const showUsers = async (req, res) => {
       res.status(200).json(usersList);
     } catch (error) {
       console.log(error);
-      res.status(404).json({ message: "Error getting users list" });
+      res.status(404).json({ message: "Error al obtener la lista de usuarios" });
     }
   };
 
@@ -26,7 +26,7 @@ const showUsers = async (req, res) => {
       console.log(error);
       res
         .status(404)
-        .json({ message: "Error searching for the requested user" });
+        .json({ message: "Error al obtener el usuario" });
     }
   };
 
@@ -36,12 +36,12 @@ const showUsers = async (req, res) => {
   
       await User.findByIdAndUpdate(req.params.id, req.body);
       console.log('BODY',req.body)
-      res.status(200).json({ message: "User updated successfully" });
+      res.status(200).json({ message: "Usuario actualizado con exito" });
     } catch (error) {
       console.log(error);
       res
         .status(404)
-        .json({ message: "Error searching for the requested user" });
+        .json({ message: "Error al obtener el usuario" });
     }
   };
 

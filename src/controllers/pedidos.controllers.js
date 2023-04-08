@@ -8,7 +8,7 @@ const showPedidos = async (req, res) => {
         res.status(200).json(pedidosList);
     } catch (error) {
         console.log(error);
-        res.status(404).json({ message: "Error getting pedidos list" });
+        res.status(404).json({ message: "Error al obtener los pedidos" });
     }
 };
 
@@ -34,10 +34,10 @@ const createPedido = async (req, res) => {
       //guardar en BD
   
       await newPedido.save();
-      res.status(201).json({ message: "Pedido created successfully" });
+      res.status(201).json({ message: "Pedido creado con exito" });
     } catch (error) {
       console.log(error);
-      res.status(400).json({ message: "Error creating pedido" });
+      res.status(400).json({ message: "Error al crear el pedido" });
     }
   };
 
@@ -53,7 +53,7 @@ const createPedido = async (req, res) => {
       console.log(error);
       res
         .status(404)
-        .json({ message: "Error searching for the requested pedido" });
+        .json({ message: "Error al buscar el pedido" });
     }
   };
 
@@ -74,7 +74,7 @@ const createPedido = async (req, res) => {
       console.log(error);
       res
         .status(404)
-        .json({ message: "Error searching for the requested pedido" });
+        .json({ message: "Error al buscar el pedido" });
     }
   };
 
@@ -86,12 +86,12 @@ const createPedido = async (req, res) => {
       console.log('DESDE PEDIDO EDICION ID EN BACK', req.params.id);
   
       await Pedido.findByIdAndUpdate(req.params.id, req.body);
-      res.status(200).json({ message: "Product updated successfully" });
+      res.status(200).json({ message: "Pedido modificado con exito" });
     } catch (error) {
       console.log(error);
       res
         .status(404)
-        .json({ message: "Error searching for the requested product" });
+        .json({ message: "Error al buscar el pedido" });
     }
   };
 
@@ -99,12 +99,12 @@ const createPedido = async (req, res) => {
     try {
       //buscar el producto por su id  y luego lo elimino
       await Pedido.findByIdAndDelete(req.params.id);
-      res.status(200).json({ message: "Pedido successfully deleted " });
+      res.status(200).json({ message: "Pedido eliminado con exito" });
     } catch (error) {
       console.log(error);
       res
         .status(404)
-        .json({ message: "Error searching for the requested product" });
+        .json({ message: "Error al buscar el pedido" });
     }
   };
 
@@ -120,12 +120,12 @@ const createPedido = async (req, res) => {
 
       await Pedido.findByIdAndUpdate(req.params.id, { $pull: { pedido: { _id: id }}, $set: { total: newTotal }  }, { new: true });
 
-      res.status(200).json({ message: "Pedido successfully deleted " });
+      res.status(200).json({ message: "Pedido eliminado con exito" });
     } catch (error) {
       console.log(error);
       res
         .status(404)
-        .json({ message: "Error searching for the requested pedido" });
+        .json({ message: "Error al buscar el pedido" });
     }
   };
 

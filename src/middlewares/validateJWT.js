@@ -7,7 +7,7 @@ const validateJWT = (req, res, next) => {
 
     if(!token){
         //error 401 que es un error de autentificación
-        res.status(401).json({message: "Need to send a token in the request"});
+        res.status(401).json({message: "Es necesario un token"});
     }
 
     //si existe el token

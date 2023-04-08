@@ -8,7 +8,7 @@ const showProducts = async (req, res) => {
     res.status(200).json(productsList);
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: "Error getting products list" });
+    res.status(404).json({ message: "Error al obtener el menu" });
   }
 };
 
@@ -23,7 +23,7 @@ const getOneProduct = async (req, res) => {
     console.log(error);
     res
       .status(404)
-      .json({ message: "Error searching for the requested product" });
+      .json({ message: "Error al buscar el producto" });
   }
 };
 
@@ -50,10 +50,10 @@ const createProduct = async (req, res) => {
     //guardar en BD
 
     await newProduct.save();
-    res.status(201).json({ message: "Product created successfully" });
+    res.status(201).json({ message: "Producto creado exitosamente" });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: "Error creating product" });
+    res.status(400).json({ message: "Error al crear el producto" });
   }
 };
 
@@ -62,12 +62,12 @@ const updateProduct = async (req, res) => {
     //buscamos el producto por id y lo modifico con los datos que me llegan desde el body
 
     await Product.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json({ message: "Product updated successfully" });
+    res.status(200).json({ message: "Producto actualizado exitosamente" });
   } catch (error) {
     console.log(error);
     res
       .status(404)
-      .json({ message: "Error searching for the requested product" });
+      .json({ message: "Error al buscar el producto" });
   }
 };
 
@@ -75,12 +75,12 @@ const deleteProduct = async (req, res) => {
   try {
     //buscar el producto por su id  y luego lo elimino
     await Product.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: "Product successfully deleted " });
+    res.status(200).json({ message: "Producto eliminado con exito" });
   } catch (error) {
     console.log(error);
     res
       .status(404)
-      .json({ message: "Error searching for the requested product" });
+      .json({ message: "Error al buscar el producto" });
   }
 };
 

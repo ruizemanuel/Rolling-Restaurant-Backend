@@ -13,16 +13,16 @@ const login = async (req, res) => {
     if (!user)
       return res
         .status(400)
-        .json({ message: "User email or password incorrect - email" });
+        .json({ message: "No se encontró un usuario con el email ingresado" });
 
     if (!user.activo)
       return res
         .status(400)
-        .json({ message: "User inactive" });
+        .json({ message: "Usuario inactivo" });
     //confirmar sie l passwaord enviado es valido
 
     const correctPassword = bcrypt.compareSync(password, user.password) // el método compara el password enviado con el guardado
-    if (!correctPassword) return res.status(404).json({ message: "User email or password incorrect - password" })
+    if (!correctPassword) return res.status(404).json({ message: "Contraseña incorrecta" })
 
     //generar el token
     const token = await generateJWT(user._id, user.name)
@@ -37,7 +37,7 @@ const login = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: "User log in failed" });
+    res.status(400).json({ message: "Error al iniciar sesion" });
   }
 };
 
@@ -58,7 +58,7 @@ const register = async (req, res) => {
     if (userFound)
       return res
         .status(400)
-        .json({ message: "A user with those email addresses already" });
+        .json({ message: "Ya existe un usuario con el email ingresado" });
     //encriptar el password
     let createdUser = new User(req.body);
     const SALT_ROUNDS = 10;
@@ -69,14 +69,14 @@ const register = async (req, res) => {
     //guardar en BD
     await createdUser.save();
     res.status(201).json({
-      message: "User created successfully",
+      message: "Usuario creado exitosamente",
       userName: createdUser.name,
       uid: createdUser._id,
       token
     });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ message: "User registration failed" });
+    res.status(400).json({ message: "Error al registrar usuario" });
   }
 };
 

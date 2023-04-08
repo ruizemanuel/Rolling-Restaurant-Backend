@@ -16,7 +16,7 @@ const generateJWT = (uid, userName) => {
       (err, token) => {
         if (err) {
           console.log(err);
-          reject("Error generating toke");
+          reject("Error al generar el token");
         }
         //si esta todo correcto
         resolve(token);
